@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GeoTrack Telemetry Message",
+  "description": "Schéma JSON d'un message de télémétrie transmis par un véhicule GeoTrack.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "vehicle_id",
+    "latitude",
+    "longitude",
+    "speed_kmh",
+    "direction_deg",
+    "timestamp",
+    "status"
+  ],
+  "properties": {
+    "vehicle_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Identifiant unique du véhicule."
+    },
+    "latitude": {
+      "type": "number",
+      "minimum": -90,
+      "maximum": 90,
+      "description": "Latitude GPS en degrés décimaux."
+    },
+    "longitude": {
+      "type": "number",
+      "minimum": -180,
+      "maximum": 180,
+      "description": "Longitude GPS en degrés décimaux."
+    },
+    "speed_kmh": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Vitesse du véhicule en kilomètres par heure."
+    },
+    "direction_deg": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 359,
+      "description": "Direction du véhicule en degrés."
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Horodatage du message au format ISO 8601."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE",
+        "MAINTENANCE",
+        "UNKNOWN"
+      ],
+      "description": "État courant du véhicule."
+    },
+    "diagnostic": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "engine": {
+          "type": "string"
+        },
+        "battery_percent": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "error_code": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}
