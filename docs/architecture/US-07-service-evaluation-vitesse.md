@@ -84,3 +84,35 @@ vitesse_mesuree > vitesse_limite ?
         | 
         v
 générer événement d'alerte
+        |
+       non
+        |
+        v
+ne générer aucun événement
+```
+
+## Réduction des alertes répétitives
+
+Un véhicule peut envoyer plusieurs positions au-dessus de la limite pendant un même épisode. Le service crée une alerte à l'entrée dans l'état de dépassement, puis applique une période de silence ou attend le retour sous le seuil avant de créer une nouvelle alerte. La règle exacte doit être configurable.
+
+Une petite marge de tolérance peut aussi être définie pour tenir compte des imprécisions de mesure. Cette marge est une décision métier et ne doit pas être ajoutée silencieusement.
+
+## Ordre et idempotence
+
+Le service ignore une télémétrie plus ancienne que la dernière position traitée pour le véhicule. L'identifiant de l'événement de dépassement permet d'éviter les doublons lors d'une retransmission.
+
+## Performance et supervision
+
+Le calcul doit être effectué au fil de l'eau et partitionné par `vehicle_id`. Les métriques suivent le débit traité, la latence d'évaluation, les erreurs, le nombre d'alertes et le retard du consommateur.
+
+## Critères de validation
+
+- Le seuil spécifique au véhicule est prioritaire sur les autres seuils.
+- Une vitesse égale à la limite ne déclenche pas d'alerte.
+- Un dépassement valide produit un événement complet.
+- Des messages répétés pendant un même épisode ne créent pas une avalanche d'alertes.
+- Une télémétrie plus ancienne ne modifie pas l'état courant.
+
+## Conclusion
+
+Le service évalue chaque message avec une règle de priorité explicite. La déduplication, l'ordre temporel et la gestion d'un épisode continu évitent des alertes incohérentes ou répétitives.

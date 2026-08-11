@@ -92,3 +92,40 @@ Création du message
         |
         v
 Fin de la période de rétention
+        |
+        v
+Suppression contrôlée ou prolongation autorisée
+```
+
+## Règles de transition
+
+Les transitions sont exécutées automatiquement par une politique de cycle de vie. Chaque transfert doit être journalisé, vérifié et relançable. Une donnée ne doit être supprimée du niveau source qu'après confirmation de son intégrité et de sa disponibilité dans le niveau cible.
+
+## Niveaux de service proposés
+
+| Niveau | Délai d'accès visé | Usage principal |
+|---|---|---|
+| Hot | Secondes | Opérations et trajets récents |
+| Warm | Secondes à minutes | Analyses historiques courantes |
+| Cold | Minutes à heures | Audit et recherche rare |
+
+Ces délais sont des objectifs de conception et doivent être validés avec la technologie choisie.
+
+## Index et copies
+
+Les index du niveau chaud peuvent être plus nombreux que ceux du niveau froid. Le coût des répliques, sauvegardes et index doit être compté séparément du volume brut. La réplication améliore la disponibilité, tandis que la sauvegarde protège contre la corruption et l'erreur humaine ; l'une ne remplace pas l'autre.
+
+## Fin de rétention
+
+Après deux ans, la suppression doit être contrôlée, traçable et conforme aux obligations validées par l'équipe. Un gel juridique, une enquête ou une règle métier peut prolonger la conservation d'un sous-ensemble précis.
+
+## Critères de validation
+
+- Une donnée change de niveau selon son âge sans perte d'intégrité.
+- Une requête indique clairement si une restauration du niveau froid est nécessaire.
+- Les comptes et sommes de contrôle sont vérifiés après transfert.
+- La suppression après deux ans est journalisée et soumise à la politique approuvée.
+
+## Conclusion
+
+La hiérarchisation proposée concilie accès rapide aux données récentes et réduction du coût des données anciennes. Les périodes retenues restent des paramètres configurables à valider par les tests et les besoins métier.

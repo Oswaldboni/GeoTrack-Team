@@ -8,4 +8,12 @@ Les interfaces prévues comprennent notamment :
 - le tableau de bord analytique ;
 - les écrans nécessaires au parcours utilisateur principal.
 
-Les liens vers les prototypes Figma et les captures d'écran finales seront documentés ici.
+## Contenu actuel
+
+- [`US-10-tableau-de-bord-analytique.png`](US-10-tableau-de-bord-analytique.png) : export du tableau de bord de la flotte.
+
+![Tableau de bord analytique GeoTrack](US-10-tableau-de-bord-analytique.png)
+
+Le lien modifiable du prototype Figma n'est pas présent dans l'archive. Il doit être ajouté ici avant la remise si le professeur exige l'accès au fichier source.
+
+L'export actuel doit encore être corrigé dans Figma : le libellé « Toutes les zones » est coupé et plusieurs lignes de la section « Alertes récentes » se chevauchent ou se replient mal.

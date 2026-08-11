@@ -71,3 +71,34 @@ Services GeoTrack
                                    |
                                    v
                                 Grafana
+```
+
+Alertmanager complète Prometheus pour acheminer les alertes selon leur gravité, regrouper les événements similaires et limiter les répétitions.
+
+## Répartition des responsabilités
+
+| Besoin | Outil proposé | Rôle |
+|---|---|---|
+| Métriques | Prometheus | Collecte et requêtes temporelles |
+| Logs | Loki | Centralisation et recherche des journaux |
+| Visualisation | Grafana | Tableaux de bord techniques |
+| Alertes | Alertmanager | Routage, regroupement et acquittement |
+
+## Corrélation
+
+Chaque requête ou message doit porter un identifiant de corrélation propagé entre l'ingestion, Kafka, les consommateurs et le stockage. Les journaux structurés incluent cet identifiant, le composant, le niveau, l'horodatage et le résultat, sans enregistrer de secret.
+
+## Conservation et sécurité
+
+L'accès aux tableaux de bord et aux logs est soumis au RBAC. La durée de conservation des métriques et journaux est définie séparément de celle de la télémétrie. Les logs contenant des renseignements sensibles doivent être minimisés et protégés.
+
+## Critères de validation
+
+- Une erreur d'ingestion peut être retrouvée avec son identifiant de corrélation.
+- Les métriques de débit, latence, erreur et retard sont visibles dans Grafana.
+- Une alerte critique est acheminée sans générer une notification répétitive à chaque échantillon.
+- L'accès aux journaux est limité aux rôles autorisés.
+
+## Conclusion
+
+Prometheus, Loki, Grafana et Alertmanager couvrent les métriques, les logs, la visualisation et l'alerte. Leur utilité dépend d'une instrumentation cohérente et de règles de conservation et d'accès explicites.

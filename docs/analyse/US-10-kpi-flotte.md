@@ -64,3 +64,39 @@ Une approche initiale consiste à utiliser la vitesse :
 ```text
 vitesse > 0  → véhicule actif
 vitesse = 0  → véhicule à l'arrêt
+```
+
+Cette règle est seulement une première approximation. Pour réduire l'effet du bruit GPS, la version recommandée considère un véhicule actif au-dessus d'un seuil configurable, par exemple 5 km/h, pendant une durée minimale. Le seuil doit être validé par le métier.
+
+## 6. Taux de disponibilité
+
+Le taux est calculé ainsi :
+
+```text
+véhicules ayant une télémétrie récente / véhicules attendus × 100
+```
+
+La fenêtre définissant une donnée « récente » doit être indiquée dans le tableau de bord, par exemple deux intervalles d'émission plus une marge.
+
+## 7. Franchissements de zone
+
+Les entrées et sorties confirmées sont comptées séparément et peuvent être regroupées par véhicule, zone ou période. Les événements dédupliqués de US-06 constituent la source de référence.
+
+## Qualité et unités
+
+- Les distances sont calculées à partir de positions valides et ordonnées.
+- Les données aberrantes ou manquantes sont signalées.
+- Les unités sont affichées : km, km/h, minutes et pourcentage.
+- Les périodes utilisent un fuseau horaire explicite.
+- Les données de démonstration sont identifiées comme telles.
+
+## Critères de validation
+
+- Chaque KPI possède une définition, une formule, une unité et une source.
+- Les mêmes filtres produisent les mêmes valeurs dans les graphiques et les exports.
+- Une période sans données est distinguée d'une valeur égale à zéro.
+- Le taux de disponibilité précise sa fenêtre de fraîcheur.
+
+## Conclusion
+
+Les KPI proposés couvrent l'utilisation, la vitesse, les incidents et la disponibilité. Leur valeur dépend de définitions stables et de règles de qualité communes à l'API, au tableau de bord et aux exports.

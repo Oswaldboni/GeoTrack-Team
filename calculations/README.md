@@ -2,7 +2,7 @@
 
 Ce dossier contient les calculs de dimensionnement du système GeoTrack.
 
-Il regroupera notamment :
+Il contient :
 - le nombre de messages par seconde ;
 - le volume de données généré par jour ;
 - le volume de stockage requis sur deux ans ;
@@ -11,3 +11,9 @@ Il regroupera notamment :
 - les limites de capacité identifiées pour le système.
 
 Toutes les formules, unités et hypothèses devront être documentées et justifiées.
+
+- [`US-03-debit-global-mps.md`](US-03-debit-global-mps.md) : débit nominal de 2 000 messages par seconde ;
+- [`US-08-analyse-stockage-2-ans.md`](US-08-analyse-stockage-2-ans.md) : analyse complète du stockage ;
+- [`US-09-volume-stockage-brut-2-ans.md`](US-09-volume-stockage-brut-2-ans.md) : calcul brut de 37,84 To.
+
+Les volumes utilisent les unités décimales : 1 To = 10¹² octets.
