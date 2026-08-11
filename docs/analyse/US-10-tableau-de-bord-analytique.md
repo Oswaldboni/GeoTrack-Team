@@ -6,6 +6,8 @@ Documenter la conception du tableau de bord analytique GeoTrack destiné aux ges
 
 Cette conception s'appuie sur les indicateurs clés de performance définis dans US-10.1 / GTB-77 et sur la maquette réalisée dans le cadre de GTB-78.
 
+![Maquette du tableau de bord analytique](../../figma/US-10-tableau-de-bord-analytique.png)
+
 ## Structure du tableau de bord
 
 Le tableau de bord est organisé afin de présenter en priorité les informations essentielles sur l'état de la flotte.
@@ -94,3 +96,35 @@ Analyse des incidents
    |
    v
 Alertes récentes
+```
+
+## Interactions
+
+Un changement de filtre met à jour toutes les cartes et tous les graphiques. Un clic sur une zone ou un véhicule peut appliquer un filtre croisé, avec une action visible pour revenir à la vue complète.
+
+Le tableau de bord distingue clairement : chargement, absence de données, erreur et résultat valide. La date de dernière mise à jour est toujours visible.
+
+## Accessibilité et lisibilité
+
+- La couleur n'est pas le seul porteur d'information.
+- Les graphiques possèdent des titres, unités, légendes et valeurs accessibles.
+- Les contrôles sont utilisables au clavier.
+- Les contrastes et la taille du texte restent lisibles.
+- Les libellés longs ne doivent pas être coupés ou se chevaucher.
+
+## Performance
+
+L'API renvoie des agrégats adaptés au graphique plutôt que toute la télémétrie brute. Les requêtes sont annulées ou remplacées lorsque l'utilisateur modifie rapidement les filtres. Un cache peut être utilisé pour les périodes fréquemment consultées, avec une durée explicite.
+
+## Critères de validation
+
+- Les filtres s'appliquent à l'ensemble du tableau de bord.
+- Les unités et la période sont visibles.
+- Les valeurs de la maquette sont identifiées comme démonstratives.
+- Les états vide, chargement et erreur sont différents.
+- Aucun libellé ni horodatage ne se chevauche à la largeur cible.
+- Les données affichées respectent les droits de l'utilisateur.
+
+## Conclusion
+
+La conception privilégie une lecture rapide, des filtres cohérents et des états explicites. La maquette doit encore être ajustée visuellement pour éviter les coupures de libellés et les retours à la ligne observés dans l'export actuel.

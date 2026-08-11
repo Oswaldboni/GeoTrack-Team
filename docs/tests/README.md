@@ -2,7 +2,7 @@
 
 Ce dossier contient la stratégie de validation de la qualité du système GeoTrack.
 
-Il regroupera notamment :
+Il regroupe :
 - le plan de tests ;
 - les scénarios d'acceptation ;
 - le plan de validation des performances ;
@@ -10,3 +10,5 @@ Il regroupera notamment :
 - les scénarios de panne ;
 - le plan de reprise après incident ;
 - la stratégie de maintenance et d'évolution du système.
+
+La matrice initiale se trouve dans [`strategie-validation.md`](strategie-validation.md).

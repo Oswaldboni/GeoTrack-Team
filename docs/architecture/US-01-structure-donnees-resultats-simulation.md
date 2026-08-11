@@ -92,3 +92,24 @@ Exemple de résultat attendu avec 100 véhicules :
 
 ```text
 Cycle 1 : 100 messages générés en X seconde(s)
+```
+
+`X` dépend de la machine utilisée et ne constitue pas à lui seul une preuve de capacité de l'architecture complète.
+
+## 8. Vérification technique réalisée
+
+Le script a été compilé et exécuté sans erreur de syntaxe. Un contrôle local a confirmé que les messages générés respectent les noms, les types et les limites principales du JSON Schema.
+
+Sur l'environnement d'audit, la génération en mémoire de 100 puis de 10 000 messages a pris moins de 0,1 seconde par lot. La taille du JSON compact observée se situait approximativement entre 235 et 252 octets. L'hypothèse de 300 octets utilisée pour le stockage est donc prudente pour le contenu JSON, mais elle ne couvre pas nécessairement tous les en-têtes réseau, index et métadonnées de stockage.
+
+## 9. Limites de la simulation
+
+- Le script mesure la génération des objets, pas l'ingestion réseau complète.
+- Il n'utilise pas encore de broker, de base de données ou de WebSocket.
+- Les positions sont aléatoires et ne représentent pas des trajets réalistes.
+- L'affichage de cinq exemples par cycle ne prouve pas que tous les messages ont été transmis.
+- Un test de charge complet doit mesurer le débit accepté, les erreurs, la latence et l'utilisation des ressources.
+
+## 10. Résultat attendu
+
+La simulation fournit un jeu de messages valide et reproductible pour vérifier le contrat de données. Elle constitue une étape préparatoire au test du pipeline nominal de 2 000 messages par seconde, et non une validation finale de performance.

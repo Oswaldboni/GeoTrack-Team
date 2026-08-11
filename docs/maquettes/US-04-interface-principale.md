@@ -72,6 +72,8 @@ Il doit être conservé dans le même dossier que ce document :
 
 `docs/maquettes/`
 
+![Maquette de l'interface principale GeoTrack](US-04-interface-principale.png)
+
 ## Résultat attendu
 
 La maquette fournit une représentation de référence de l'écran principal GeoTrack comprenant la carte interactive, les véhicules, leur état, la liste latérale et les informations détaillées du véhicule sélectionné.

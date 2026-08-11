@@ -81,3 +81,37 @@ Un enregistrement journalier pourrait contenir :
   "operating_minutes": 415,
   "alert_count": 3
 }
+```
+
+## 6. Production des agrégats
+
+Un traitement planifié calcule les agrégats après la fin de la période concernée. Il doit être idempotent afin de pouvoir recalculer une journée corrigée sans produire de doublon.
+
+Chaque agrégat conserve la période, le véhicule, la version de la règle de calcul et l'heure du dernier calcul. Les valeurs doivent pouvoir être rapprochées des données brutes tant que celles-ci sont conservées.
+
+## 7. Conservation des données brutes
+
+L'agrégation ne modifie pas automatiquement l'exigence de conservation sur deux ans. La suppression éventuelle de données brutes doit être explicitement autorisée par la politique de rétention et par les besoins d'audit. Sans cette décision, les agrégats complètent les données brutes au lieu de les remplacer.
+
+## 8. Contrôles de qualité
+
+- comparer les comptes avant et après transfert ;
+- vérifier les sommes de contrôle des archives ;
+- recalculer un échantillon d'agrégats ;
+- journaliser les échecs et les reprises ;
+- tester la restauration avant de supprimer une copie source.
+
+## 9. Mesure du gain
+
+Le gain doit être mesuré avec les formats et technologies réellement retenus. Un taux de compression théorique ne doit pas être présenté comme une capacité garantie. Le rapport final indiquera le volume brut, le volume compressé observé et le coût des index séparément.
+
+## Critères de validation
+
+- Le traitement est relançable sans doublon.
+- Un agrégat peut être relié à sa période et à sa règle de calcul.
+- Les contrôles détectent un transfert incomplet ou corrompu.
+- La suppression des données brutes n'est possible qu'après validation de la politique.
+
+## Conclusion
+
+La compression réduit l'empreinte physique et les agrégats accélèrent les analyses historiques. Leur efficacité doit être mesurée, et la conservation des données brutes demeure régie par une décision explicite de rétention.
