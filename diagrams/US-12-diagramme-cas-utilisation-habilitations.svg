@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1250" viewBox="0 0 1800 1250">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#263238"/>
+    </marker>
+    <marker id="generalization" markerWidth="18" markerHeight="18" refX="16" refY="9" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M 1 1 L 16 9 L 1 17 Z" fill="#f7fbff" stroke="#263238" stroke-width="2"/>
+    </marker>
+    <style>
+      .title { font: 700 30px Arial, sans-serif; fill: #17212b; }
+      .subtitle { font: 400 18px Arial, sans-serif; fill: #455a64; }
+      .boundary { fill: #f7fbff; stroke: #263238; stroke-width: 3; }
+      .boundary-title { font: 700 23px Arial, sans-serif; fill: #17212b; }
+      .usecase { fill: #e8f1fb; stroke: #2367a8; stroke-width: 2.5; }
+      .usecase-text { font: 600 17px Arial, sans-serif; fill: #17212b; text-anchor: middle; }
+      .line { fill: none; stroke: #263238; stroke-width: 2.2; }
+      .inherit { fill: none; stroke: #455a64; stroke-width: 2.2; stroke-dasharray: 8 6; marker-end: url(#generalization); }
+      .actor-line { fill: none; stroke: #263238; stroke-width: 2.2; }
+      .actor { stroke: #17212b; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .actor-label { font: 700 19px Arial, sans-serif; fill: #17212b; text-anchor: middle; }
+      .actor-note { font: 400 15px Arial, sans-serif; fill: #455a64; text-anchor: middle; }
+      .note { fill: #fff8dc; stroke: #c18a00; stroke-width: 2; }
+      .note-text { font: 400 16px Arial, sans-serif; fill: #4e3b00; }
+      .legend-title { font: 700 16px Arial, sans-serif; fill: #17212b; }
+      .legend { font: 400 15px Arial, sans-serif; fill: #37474f; }
+    </style>
+  </defs>
+
+  <rect width="1800" height="1250" fill="#ffffff"/>
+  <text x="900" y="48" class="title" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#17212b">GeoTrack — diagramme de cas d’utilisation des habilitations</text>
+  <text x="900" y="80" class="subtitle" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#455a64">US-12 / GTB-45 · basé sur la matrice des permissions de GTB-96</text>
+
+  <!-- boundary -->
+  <rect x="500" y="120" width="1200" height="930" rx="12" class="boundary"/>
+  <text x="535" y="165" class="boundary-title">système GeoTrack — contrôle d’accès</text>
+  <line x1="530" y1="185" x2="1670" y2="185" stroke="#90a4ae" stroke-width="1.5"/>
+
+  <!-- actor inheritance, drawn behind use cases -->
+  <path d="M 218 270 L 300 100 L 1715 100 L 1715 490" class="inherit"/>
+  <path d="M 190 285 L 190 785" class="inherit"/>
+
+  <!-- actor-to-use-case associations -->
+  <!-- administrator directly owns account and role administration -->
+  <path d="M 265 195 L 625 255" class="actor-line"/>
+  <path d="M 265 215 L 990 255" class="actor-line"/>
+
+  <!-- fleet manager associations -->
+  <path d="M 270 835 L 390 700 L 530 700" class="actor-line"/>
+  <path d="M 270 835 L 390 455 L 900 455" class="actor-line"/>
+  <path d="M 270 835 L 390 420 L 1260 420" class="actor-line"/>
+  <path d="M 270 850 L 530 700" class="actor-line"/>
+  <path d="M 270 860 L 900 700" class="actor-line"/>
+  <path d="M 270 875 L 390 950 L 1260 700" class="actor-line"/>
+
+  <!-- operator associations -->
+  <path d="M 1640 555 L 1510 360 L 830 360 L 830 440" class="actor-line"/>
+  <path d="M 1640 570 L 1200 475" class="actor-line"/>
+  <path d="M 1640 585 L 1585 475" class="actor-line"/>
+
+  <!-- use cases -->
+  <ellipse cx="770" cy="280" rx="145" ry="54" class="usecase"/>
+  <text x="770" y="273" class="usecase-text"><tspan x="770" dy="0">Gérer les comptes</tspan><tspan x="770" dy="23">utilisateurs</tspan></text>
+
+  <ellipse cx="1130" cy="280" rx="145" ry="54" class="usecase"/>
+  <text x="1130" y="273" class="usecase-text"><tspan x="1130" dy="0">Attribuer / modifier</tspan><tspan x="1130" dy="23">les rôles</tspan></text>
+
+  <ellipse cx="680" cy="475" rx="150" ry="54" class="usecase"/>
+  <text x="680" y="468" class="usecase-text"><tspan x="680" dy="0">Consulter la carte</tspan><tspan x="680" dy="23">et les positions</tspan></text>
+
+  <ellipse cx="1050" cy="475" rx="150" ry="54" class="usecase"/>
+  <text x="1050" y="468" class="usecase-text"><tspan x="1050" dy="0">Consulter les alertes</tspan><tspan x="1050" dy="23">lecture seule opérateur</tspan></text>
+
+  <ellipse cx="1420" cy="475" rx="165" ry="54" class="usecase"/>
+  <text x="1420" y="468" class="usecase-text"><tspan x="1420" dy="0">Consulter le tableau</tspan><tspan x="1420" dy="23">de bord analytique</tspan></text>
+
+  <ellipse cx="680" cy="700" rx="150" ry="54" class="usecase"/>
+  <text x="680" y="693" class="usecase-text"><tspan x="680" dy="0">Créer / modifier</tspan><tspan x="680" dy="23">les zones geofencing</tspan></text>
+
+  <ellipse cx="1050" cy="700" rx="150" ry="54" class="usecase"/>
+  <text x="1050" y="693" class="usecase-text"><tspan x="1050" dy="0">Exporter</tspan><tspan x="1050" dy="23">les données</tspan></text>
+
+  <ellipse cx="1420" cy="700" rx="165" ry="54" class="usecase"/>
+  <text x="1420" y="693" class="usecase-text"><tspan x="1420" dy="0">Gérer les véhicules</tspan><tspan x="1420" dy="23">ajout / modification</tspan></text>
+
+  <!-- note -->
+  <rect x="605" y="855" width="990" height="125" rx="8" class="note"/>
+  <text x="630" y="890" class="note-text"><tspan x="630" dy="0">règle d’autorisation :</tspan><tspan x="630" dy="27">toute action protégée est vérifiée côté serveur à l’aide de role_permissions.</tspan><tspan x="630" dy="27">une permission absente est refusée par défaut; les accès limités respectent le périmètre affecté.</tspan></text>
+
+  <!-- actors -->
+  <!-- admin -->
+  <circle cx="190" cy="145" r="28" class="actor"/>
+  <path d="M 190 173 L 190 250 M 190 190 L 145 225 M 190 190 L 235 225 M 190 250 L 150 310 M 190 250 L 230 310" class="actor"/>
+  <text x="190" y="345" class="actor-label">Administrateur</text>
+  <text x="190" y="370" class="actor-note">accès complet</text>
+
+  <!-- fleet manager -->
+  <circle cx="190" cy="795" r="28" class="actor"/>
+  <path d="M 190 823 L 190 900 M 190 840 L 145 875 M 190 840 L 235 875 M 190 900 L 150 960 M 190 900 L 230 960" class="actor"/>
+  <text x="190" y="995" class="actor-label">Gestionnaire</text>
+  <text x="190" y="1020" class="actor-label">de flotte</text>
+
+  <!-- operator -->
+  <circle cx="1715" cy="495" r="28" class="actor"/>
+  <path d="M 1715 523 L 1715 600 M 1715 540 L 1670 575 M 1715 540 L 1760 575 M 1715 600 L 1675 660 M 1715 600 L 1755 660" class="actor"/>
+  <text x="1715" y="700" class="actor-label">Opérateur</text>
+  <text x="1715" y="725" class="actor-note">consultation courante</text>
+
+  <!-- small legend -->
+  <text x="540" y="1110" class="legend-title">lecture du diagramme</text>
+  <text x="540" y="1140" class="legend">• les lignes pleines représentent les actions disponibles;</text>
+  <text x="540" y="1165" class="legend">• les flèches en pointillé représentent la généralisation : l’administrateur hérite des droits des autres rôles;</text>
+  <text x="540" y="1190" class="legend">• « lecture seule », « accès limité » et « périmètre affecté » précisent les restrictions de l’opérateur.</text>
+</svg>
